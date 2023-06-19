@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import MenuBar from './components/MenuBar.vue'
+</script>
 
 <template>
-  <h1>Vue JS Weather App</h1>
+  <MenuBar />
 </template>
 
 <style scoped></style>

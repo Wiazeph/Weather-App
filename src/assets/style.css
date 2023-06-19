@@ -1,3 +1,20 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-gradient-to-t from-[#9795f0] to-[#fbc8d4];
+  }
+
+  #app {
+    @apply mx-auto my-6 w-[960px];
+  }
+
+  header {
+    @apply flex h-14 items-center justify-center gap-6;
+  }
+}
