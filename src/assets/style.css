@@ -11,7 +11,7 @@
   }
 
   #app {
-    @apply mx-auto my-6 w-[960px];
+    @apply mx-auto my-6 flex w-[960px] flex-col gap-6;
   }
 
   header {
