@@ -129,8 +129,11 @@ const formattedLocalTime = computed(() => {
 @tailwind utilities;
 
 @layer utilities {
+  .today-card {
+    @apply flex flex-col;
+  }
   .weather-informations {
-    @apply flex h-32 items-center  bg-red-400 p-4;
+    @apply flex h-40 items-center  bg-red-400 p-4;
   }
 
   .weather-details {
@@ -138,7 +141,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .details {
-    @apply flex w-[calc(50%-12px)] items-center justify-center  bg-red-400 py-4;
+    @apply flex h-[120px] w-[calc(50%-12px)] items-center justify-center bg-red-400 py-4;
   }
 
   .details-left {
