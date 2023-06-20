@@ -15,10 +15,6 @@
       v-model="city"
       @keyup.enter="getWeatherData"
     />
-
-    <!-- @input="getWeatherData" -->
-    <!-- <button @click="getWeatherData">Hava Durumu</button> -->
-
     <label for="search">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
@@ -35,17 +31,15 @@
       />
     </svg>
   </div>
-
-  
 </template>
 
 <script setup>
+import { useWeatherStore } from '../stores/WeatherDataStore'
 import axios from 'axios'
-
 import { ref } from 'vue'
 
 const city = ref('')
-const weatherData = ref(null)
+const weatherStore = useWeatherStore()
 
 const getWeatherData = async () => {
   try {
@@ -53,16 +47,15 @@ const getWeatherData = async () => {
       `https://api.weatherapi.com/v1/current.json?key=7b2f4b0de753442aa37235151231706&q=${city.value}`
     )
 
-    weatherData.value = response.data
+    weatherStore.setWeatherData(response.data)
 
-    console.log('🚀 ~ weatherData.value:', weatherData.value)
+    console.log(response.data)
   } catch (error) {
     console.error(error)
   }
 
   return {
     city,
-    weatherData,
     getWeatherData
   }
 }
@@ -74,7 +67,7 @@ const getWeatherData = async () => {
 @layer utilities {
   /* my/fav-location */
   .menu-btn {
-    @apply flex h-full w-16 shrink-0 items-center justify-center bg-blue-400;
+    @apply flex h-full w-16 shrink-0 items-center justify-center rounded-xl bg-blue-400;
   }
   .menu-icon {
     @apply h-7 w-7 fill-current hover:cursor-pointer;
@@ -87,7 +80,7 @@ const getWeatherData = async () => {
   }
 
   .search-location input {
-    @apply h-full w-full rounded-lg  pl-12 pr-4 outline-none;
+    @apply h-full w-full rounded-xl  pl-12 pr-4 outline-none;
   }
 
   .search-location svg {

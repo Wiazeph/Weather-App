@@ -11,7 +11,7 @@
   }
 
   #app {
-    @apply mx-auto my-6 flex w-[960px] flex-col gap-6;
+    @apply mx-auto my-8 flex w-[850px] flex-col gap-10;
   }
 
   header {
