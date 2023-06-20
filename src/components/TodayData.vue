@@ -129,20 +129,16 @@ const formattedLocalTime = computed(() => {
 @tailwind utilities;
 
 @layer utilities {
-  .section-description {
-    @apply mb-6 text-4xl;
-  }
-
   .weather-informations {
-    @apply mb-6 flex h-32 items-center gap-6 rounded-xl bg-red-400 p-4;
+    @apply flex h-32 items-center  bg-red-400 p-4;
   }
 
   .weather-details {
-    @apply flex h-32 flex-wrap gap-6;
+    @apply flex flex-wrap;
   }
 
   .details {
-    @apply flex w-[calc(50%-12px)] items-center justify-center rounded-xl bg-red-400 py-6;
+    @apply flex w-[calc(50%-12px)] items-center justify-center  bg-red-400 py-4;
   }
 
   .details-left {

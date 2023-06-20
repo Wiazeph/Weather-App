@@ -44,7 +44,7 @@ const weatherStore = useWeatherStore()
 const getWeatherData = async () => {
   try {
     const response = await axios.get(
-      `https://api.weatherapi.com/v1/current.json?key=7b2f4b0de753442aa37235151231706&q=${city.value}`
+      `https://api.weatherapi.com/v1/forecast.json?key=7b2f4b0de753442aa37235151231706&q=${city.value}&days=3`
     )
 
     weatherStore.setWeatherData(response.data)
@@ -67,8 +67,9 @@ const getWeatherData = async () => {
 @layer utilities {
   /* my/fav-location */
   .menu-btn {
-    @apply flex h-full w-16 shrink-0 items-center justify-center rounded-xl bg-blue-400;
+    @apply flex h-full w-16 shrink-0 items-center justify-center bg-blue-400;
   }
+
   .menu-icon {
     @apply h-7 w-7 fill-current hover:cursor-pointer;
   }
@@ -80,7 +81,7 @@ const getWeatherData = async () => {
   }
 
   .search-location input {
-    @apply h-full w-full rounded-xl  pl-12 pr-4 outline-none;
+    @apply h-full w-full pl-12 pr-4 outline-none;
   }
 
   .search-location svg {

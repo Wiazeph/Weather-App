@@ -1,20 +1,44 @@
 @tailwind base;
 
 @layer base {
-  html,
-  body {
-    @apply h-full;
+  header,
+  .today {
+    @apply mb-10;
   }
+
+  header,
+  .weather-informations,
+  .weather-details {
+    @apply gap-6;
+  }
+
+  .section-description,
+  .weather-informations {
+    @apply mb-6;
+  }
+
+  .menu-btn,
+  .search-location input,
+  .weather-informations,
+  .details {
+    @apply rounded-xl;
+  }
+
+  /* // */
 
   body {
     @apply bg-gradient-to-t from-[#9795f0] to-[#fbc8d4];
   }
 
   #app {
-    @apply mx-auto my-8 flex w-[850px] flex-col gap-10;
+    @apply mx-auto my-8 w-[850px];
   }
 
   header {
-    @apply flex h-14 items-center justify-center gap-6;
+    @apply flex h-14 items-center justify-center;
+  }
+
+  .section-description {
+    @apply text-4xl;
   }
 }
