@@ -2,25 +2,24 @@
 
 @layer base {
   header,
-  .today {
+  .today,
+  .section-description {
     @apply mb-10;
   }
 
   header,
+  .today-card,
   .weather-informations,
-  .weather-details {
+  .weather-details,
+  .next-days-cards {
     @apply gap-6;
-  }
-
-  .section-description,
-  .weather-informations {
-    @apply mb-6;
   }
 
   .menu-btn,
   .search-location input,
   .weather-informations,
-  .details {
+  .details,
+  .day-card {
     @apply rounded-xl;
   }
 
