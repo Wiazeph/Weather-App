@@ -5,15 +5,13 @@
     <div class="today-card">
       <div class="weather-informations">
         <div class="date w-1/4 text-right text-lg">
-          {{ weatherData ? formattedLocalTime : 'Loading...' }}
+          {{ isLoading ? 'Loading...' : formattedLocalTime }}
         </div>
         <div class="city w-2/4 text-center text-6xl">
-          {{ weatherData ? weatherData.location.name : 'Loading...' }}
-          <!-- {{ weatherData?.location?.name || 'Loading...' }} -->
+          {{ isLoading ? 'Loading...' : weatherData.location.name }}
         </div>
         <div class="country w-1/4 text-left text-lg">
-          {{ weatherData ? weatherData.location.country : 'Loading...' }}
-          <!-- {{ weatherData?.location?.country || 'Loading...' }} -->
+          {{ isLoading ? 'Loading...' : weatherData.location.country }}
         </div>
       </div>
       <div class="weather-details">
@@ -28,8 +26,7 @@
           <div class="details-right">
             <div class="details-title">Temperature</div>
             <div class="details-content">
-              {{ weatherData ? `${weatherData.current.feelslike_c}°C` : 'Loading...' }}
-              <!-- {{ weatherData ? weatherData.current.feelslike_c + '°C' : 'Loading...' }} -->
+              {{ isLoading ? 'Loading...' : `${weatherData.current.feelslike_c}°C` }}
             </div>
           </div>
         </div>
@@ -38,21 +35,15 @@
           <div class="details-left">
             <img
               class="h-12"
-              :src="weatherData ? weatherData.current.condition.icon : ''"
-              :alt="weatherData ? weatherData.current.condition.text : ''"
+              :src="isLoading ? '' : weatherData.current.condition.icon"
+              :alt="isLoading ? '' : weatherData.current.condition.text"
             />
-            <!-- <img
-              class="h-12"
-              :src="weatherData?.current?.condition?.icon"
-              :alt="weatherData?.current?.condition?.text"
-            /> -->
           </div>
           <div class="details-right">
             <div class="details-title">Current Condition</div>
             <div class="details-content">
               <div>
-                {{ weatherData ? weatherData.current.condition.text : 'Loading...' }}
-                <!-- {{ weatherData?.current?.condition?.text || 'Loading...' }} -->
+                {{ isLoading ? 'Loading...' : weatherData.current.condition.text }}
               </div>
             </div>
           </div>
@@ -69,8 +60,7 @@
           <div class="details-right">
             <div class="details-title">Wind Speed</div>
             <div class="details-content">
-              {{ weatherData ? `${weatherData.current.wind_kph} km/h` : 'Loading...' }}
-              <!-- {{ weatherData ? weatherData.current.wind_kph + ' km/h' : 'Loading...' }} -->
+              {{ isLoading ? 'Loading...' : `${weatherData.current.wind_kph} km/h` }}
             </div>
           </div>
         </div>
@@ -86,8 +76,7 @@
           <div class="details-right">
             <div class="details-title">Humidity</div>
             <div class="details-content">
-              {{ weatherData ? `${weatherData.current.humidity}%` : 'Loading...' }}
-              <!-- {{ weatherData ? weatherData.current.humidity + '%' : 'Loading...' }} -->
+              {{ isLoading ? 'Loading...' : `${weatherData.current.humidity}%` }}
             </div>
           </div>
         </div>
@@ -99,14 +88,12 @@
 <script setup>
 import { useWeatherStore } from '../stores/WeatherDataStore'
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
-const weatherStore = useWeatherStore()
-const weatherData = computed(() => weatherStore.weatherData)
+const { weatherData, isLoading } = storeToRefs(useWeatherStore())
 
 const formattedLocalTime = computed(() => {
-  const localTime = new Date(
-    weatherData.value && weatherData.value.location && weatherData.value.location.localtime
-  )
+  const localTime = new Date(weatherData.value.location.localtime)
 
   const options = {
     day: 'numeric',

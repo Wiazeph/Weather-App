@@ -13,7 +13,7 @@
       type="text"
       placeholder="Enter a city name"
       v-model="city"
-      @keyup.enter="getWeatherData"
+      @keyup.enter="handleGetWeatherData"
     />
     <label for="search">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -35,30 +35,18 @@
 
 <script setup>
 import { useWeatherStore } from '../stores/WeatherDataStore'
-import axios from 'axios'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const city = ref('')
+const city = ref('Istanbul')
 const weatherStore = useWeatherStore()
 
-const getWeatherData = async () => {
-  try {
-    const response = await axios.get(
-      `https://api.weatherapi.com/v1/forecast.json?key=7b2f4b0de753442aa37235151231706&q=${city.value}&days=3`
-    )
-
-    weatherStore.setWeatherData(response.data)
-
-    console.log(response.data)
-  } catch (error) {
-    console.error(error)
-  }
-
-  return {
-    city,
-    getWeatherData
-  }
+const handleGetWeatherData = () => {
+  weatherStore.getWeatherData(city.value)
 }
+
+onMounted(() => {
+  weatherStore.getWeatherData(city.value)
+})
 </script>
 
 <style scoped>
