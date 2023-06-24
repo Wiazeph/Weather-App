@@ -116,6 +116,10 @@ const formattedLocalTime = computed(() => {
 @tailwind utilities;
 
 @layer utilities {
+  .today {
+    @apply mb-12;
+  }
+
   .today-card {
     @apply flex flex-col;
   }
