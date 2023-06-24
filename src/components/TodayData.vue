@@ -4,13 +4,13 @@
 
     <div class="today-card">
       <div class="weather-informations">
-        <div class="date w-1/4 text-right text-lg">
+        <div class="date w-1/4 text-right text-xl">
           {{ isLoading ? 'Loading...' : formattedLocalTime }}
         </div>
-        <div class="city w-2/4 text-center text-6xl">
+        <div class="city w-2/4 text-center text-5xl">
           {{ isLoading ? 'Loading...' : weatherData.location.name }}
         </div>
-        <div class="country w-1/4 text-left text-lg">
+        <div class="country w-1/4 text-center text-xl">
           {{ isLoading ? 'Loading...' : weatherData.location.country }}
         </div>
       </div>
@@ -120,7 +120,7 @@ const formattedLocalTime = computed(() => {
     @apply flex flex-col;
   }
   .weather-informations {
-    @apply flex h-40 items-center  bg-red-400 p-4;
+    @apply flex h-40 items-center bg-gray-800 p-4 text-white;
   }
 
   .weather-details {
@@ -128,7 +128,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .details {
-    @apply flex h-[120px] w-[calc(50%-12px)] items-center justify-center bg-red-400 py-4;
+    @apply flex h-[120px] w-[calc(50%-12px)] items-center justify-center bg-gray-800 py-4;
   }
 
   .details-left {
@@ -136,7 +136,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .todaydata-icon {
-    @apply h-10;
+    @apply h-8 text-white;
   }
 
   .details-right {
@@ -148,7 +148,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .details-content {
-    @apply text-3xl text-white;
+    @apply text-3xl;
   }
 }
 </style>

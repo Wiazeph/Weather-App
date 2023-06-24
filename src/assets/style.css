@@ -1,6 +1,16 @@
 @tailwind base;
 
 @layer base {
+  svg {
+    @apply fill-current;
+  }
+
+  img {
+    @apply select-none;
+  }
+
+  /* // */
+
   header,
   .today,
   .section-description {
@@ -9,7 +19,6 @@
 
   header,
   .today-card,
-  .weather-informations,
   .weather-details,
   .next-days-cards {
     @apply gap-6;
@@ -26,18 +35,28 @@
   /* // */
 
   body {
-    @apply bg-gradient-to-t from-[#9795f0] to-[#fbc8d4];
+    @apply bg-gray-900;
   }
 
   #app {
-    @apply mx-auto my-8 w-[850px];
+    @apply mx-auto my-10 w-[1000px];
   }
 
   header {
     @apply flex h-14 items-center justify-center;
   }
 
+  /* // */
+
   .section-description {
-    @apply text-4xl;
+    @apply select-none text-4xl text-white;
+  }
+
+  .details-title {
+    @apply text-gray-400;
+  }
+
+  .details-content {
+    @apply text-white;
   }
 }

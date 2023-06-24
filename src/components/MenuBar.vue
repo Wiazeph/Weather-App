@@ -59,11 +59,11 @@ onMounted(() => {
 @layer utilities {
   /* my/fav-location */
   .menu-btn {
-    @apply flex h-full w-16 shrink-0 items-center justify-center bg-blue-400;
+    @apply flex h-full w-16 shrink-0 items-center justify-center bg-gray-800;
   }
 
   .menu-icon {
-    @apply h-7 w-7 fill-current hover:cursor-pointer;
+    @apply h-5 hover:cursor-pointer text-white;
   }
   /* my/fav-location */
 
@@ -77,7 +77,7 @@ onMounted(() => {
   }
 
   .search-location svg {
-    @apply absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform fill-current hover:cursor-text;
+    @apply absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform hover:cursor-text;
   }
   /* search-location */
 }

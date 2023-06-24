@@ -17,8 +17,10 @@
                 />
               </svg>
               <div>
-                <div>Temperature</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[1].day.avgtemp_c }}</div>
+                <div class="details-title">Temperature</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[1].day.avgtemp_c }}
+                </div>
               </div>
             </div>
 
@@ -29,8 +31,10 @@
                 />
               </svg>
               <div>
-                <div>Wind Speed</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[1].day.avgvis_km }}</div>
+                <div class="details-title">Wind Speed</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[1].day.avgvis_km }}
+                </div>
               </div>
             </div>
           </div>
@@ -38,13 +42,15 @@
           <div class="details">
             <div class="current-condition details-section">
               <img
-                class="h-10 -translate-x-[6px]"
+                class="details-img"
                 :src="isLoading ? '' : weatherData[1].day.condition.icon"
                 :alt="isLoading ? '' : weatherData[1].day.condition.text"
               />
               <div class="-translate-x-3">
-                <div>Current Condition</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[1].day.condition.text }}</div>
+                <div class="details-title">Current Condition</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[1].day.condition.text }}
+                </div>
               </div>
             </div>
 
@@ -56,8 +62,10 @@
               </svg>
 
               <div>
-                <div>Humidity</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[1].day.avghumidity }}</div>
+                <div class="details-title">Humidity</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[1].day.avghumidity }}
+                </div>
               </div>
             </div>
           </div>
@@ -77,8 +85,10 @@
                 />
               </svg>
               <div>
-                <div>Temperature</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[2].day.avgtemp_c }}</div>
+                <div class="details-title">Temperature</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[2].day.avgtemp_c }}
+                </div>
               </div>
             </div>
             <div class="wind-speed details-section">
@@ -88,21 +98,25 @@
                 />
               </svg>
               <div>
-                <div>Wind Speed</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[2].day.avgvis_km }}</div>
+                <div class="details-title">Wind Speed</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[2].day.avgvis_km }}
+                </div>
               </div>
             </div>
           </div>
           <div class="details">
             <div class="current-condition details-section">
               <img
-                class="h-10 -translate-x-[6px]"
+                class="details-img"
                 :src="isLoading ? '' : weatherData[2].day.condition.icon"
                 :alt="isLoading ? '' : weatherData[2].day.condition.text"
               />
               <div class="-translate-x-3">
-                <div>Current Condition</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[2].day.condition.text }}</div>
+                <div class="details-title">Current Condition</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[2].day.condition.text }}
+                </div>
               </div>
             </div>
             <div class="humidity details-section">
@@ -113,8 +127,10 @@
               </svg>
 
               <div>
-                <div>Humidity</div>
-                <div>{{ isLoading ? 'Loading...' : weatherData[2].day.avghumidity }}</div>
+                <div class="details-title">Humidity</div>
+                <div class="details-content">
+                  {{ isLoading ? 'Loading...' : weatherData[2].day.avghumidity }}
+                </div>
               </div>
             </div>
           </div>
@@ -163,11 +179,11 @@ const formattedLocalTime = (date) => {
   }
 
   .day-card {
-    @apply flex h-[200px] w-[calc(50%-12px)] flex-col gap-3 bg-red-400 px-6 py-4;
+    @apply flex h-[200px] w-[calc(50%-12px)] flex-col gap-3 bg-gray-800 px-6 py-4;
   }
 
   .date {
-    @apply mb-2 text-center;
+    @apply mb-2 text-center text-white;
   }
 
   .informations-section {
@@ -179,11 +195,15 @@ const formattedLocalTime = (date) => {
   }
 
   .details-section {
-    @apply flex h-[calc(100%-8px)] items-center gap-4;
+    @apply flex h-[calc(100%-8px)] items-center gap-5;
+  }
+
+  .details-img {
+    @apply h-10 -translate-x-[6px];
   }
 
   .forecast-icon {
-    @apply h-6;
+    @apply h-6 text-white;
   }
 }
 </style>
