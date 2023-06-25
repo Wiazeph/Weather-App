@@ -125,9 +125,9 @@ const formattedLocalTime = computed(() => {
 // Favorites
 
 const weatherStore = useWeatherStore()
+
 const addToFavorites = () => {
-  const city = weatherData.value.location.name
-  const country = weatherData.value.location.country
+  const { name: city, country } = weatherData.value.location
   const favorite = { city, country, weatherData: weatherData.value }
   weatherStore.addToFavorite(favorite)
 }

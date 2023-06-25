@@ -5,7 +5,7 @@ export const useWeatherStore = defineStore('weather', {
   state: () => ({
     weatherData: null,
     isLoading: true,
-    favorites: []
+    favorites: JSON.parse(localStorage.getItem('favorites')) || []
   }),
   actions: {
     async getWeatherData(city) {
@@ -64,14 +64,16 @@ export const useWeatherStore = defineStore('weather', {
       localStorage.setItem('favorites', JSON.stringify(this.favorites))
     },
 
+    removeFavorite(favorite) {
+      this.favorites = this.favorites.filter((item) => item !== favorite)
+      localStorage.setItem('favorites', JSON.stringify(this.favorites))
+    },
+
     loadToFavoritesFromStorage() {
       const favoritesData = localStorage.getItem('favorites')
       if (favoritesData) {
-        this.favorites = JSON.parse(favoritesData)
+        this.favorites = favoritesData
       }
     }
-  },
-  onBeforeMount() {
-    this.loadToFavoritesFromStorage()
   }
 })
