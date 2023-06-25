@@ -15,18 +15,21 @@ export const useWeatherStore = defineStore('weather', {
           `https://api.weatherapi.com/v1/forecast.json?key=7b2f4b0de753442aa37235151231706&q=${city}&days=3`
         )
 
-        this.weatherData = response.data
-
-        this.isLoading = false
-
-        console.log('getWeatherData ----->', response.data)
+        if (response.status === 200) {
+          this.weatherData = response.data
+        }
       } catch (error) {
         console.error(error)
+        alert('You have entered invalid or incorrect data/city name! Please try again.')
+      } finally {
+        this.isLoading = false
       }
     },
 
     async getLocationData() {
       if (navigator.geolocation) {
+        this.isLoading = true
+
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             try {
@@ -37,14 +40,15 @@ export const useWeatherStore = defineStore('weather', {
               )
 
               this.weatherData = response.data
-
-              console.log('getLocationData ----->', response.data)
             } catch (error) {
               console.error(error)
+            } finally {
+              this.isLoading = false
             }
           },
           (error) => {
             alert('Failed to get location: ' + error.message)
+            this.isLoading = false
           }
         )
       } else {
