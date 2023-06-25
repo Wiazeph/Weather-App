@@ -13,7 +13,9 @@ export const useWeatherStore = defineStore('weather', {
         this.isLoading = true
 
         const response = await axios.get(
-          `https://api.weatherapi.com/v1/forecast.json?key=7b2f4b0de753442aa37235151231706&q=${city}&days=3`
+          `https://api.weatherapi.com/v1/forecast.json?key=${
+            import.meta.env.VITE_API
+          }&q=${city}&days=3`
         )
 
         if (response.status === 200) {
@@ -37,7 +39,9 @@ export const useWeatherStore = defineStore('weather', {
               const latitude = position.coords.latitude
               const longitude = position.coords.longitude
               const response = await axios.get(
-                `https://api.weatherapi.com/v1/forecast.json?key=7b2f4b0de753442aa37235151231706&q=${latitude},${longitude}&days=3`
+                `https://api.weatherapi.com/v1/forecast.json?key=${
+                  import.meta.env.VITE_API
+                }&q=${latitude},${longitude}&days=3`
               )
 
               this.weatherData = response.data
