@@ -4,7 +4,8 @@ import axios from 'axios'
 export const useWeatherStore = defineStore('weather', {
   state: () => ({
     weatherData: null,
-    isLoading: true
+    isLoading: true,
+    favorites: []
   }),
   actions: {
     async getWeatherData(city) {
@@ -54,6 +55,23 @@ export const useWeatherStore = defineStore('weather', {
       } else {
         alert('Geolocation is not supported by this browser.')
       }
+    },
+
+    // Favorites
+
+    addToFavorite(favorite) {
+      this.favorites.push(favorite)
+      localStorage.setItem('favorites', JSON.stringify(this.favorites))
+    },
+
+    loadToFavoritesFromStorage() {
+      const favoritesData = localStorage.getItem('favorites')
+      if (favoritesData) {
+        this.favorites = JSON.parse(favoritesData)
+      }
     }
+  },
+  onBeforeMount() {
+    this.loadToFavoritesFromStorage()
   }
 })

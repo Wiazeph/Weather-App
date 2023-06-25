@@ -13,6 +13,17 @@
         <div class="country w-full text-center text-sm sm:w-1/4 sm:text-lg md:text-xl">
           {{ isLoading ? 'Loading...' : weatherData.location.country }}
         </div>
+        <button class="fav-btn" @click="addToFavorites" v-if="!isFavorite">
+          <svg
+            class="h-full text-white transition-all duration-300 ease-in-out hover:scale-125"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+            />
+          </svg>
+        </button>
       </div>
       <div class="weather-details">
         <div class="temperature details">
@@ -90,7 +101,7 @@ import { useWeatherStore } from '../stores/WeatherDataStore'
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 
-const { weatherData, isLoading } = storeToRefs(useWeatherStore())
+const { weatherData, isLoading, favorites } = storeToRefs(useWeatherStore())
 
 const formattedLocalTime = computed(() => {
   const localTime = new Date(weatherData.value.location.localtime)
@@ -110,6 +121,21 @@ const formattedLocalTime = computed(() => {
 
   return `${month} - ${weekday}`
 })
+
+// Favorites
+
+const weatherStore = useWeatherStore()
+const addToFavorites = () => {
+  const city = weatherData.value.location.name
+  const country = weatherData.value.location.country
+  const favorite = { city, country, weatherData: weatherData.value }
+  weatherStore.addToFavorite(favorite)
+}
+
+const isFavorite = computed(() => {
+  const cityName = weatherData.value?.location?.name
+  return favorites.value.some((favorite) => favorite.city === cityName)
+})
 </script>
 
 <style scoped>
@@ -124,7 +150,11 @@ const formattedLocalTime = computed(() => {
     @apply flex flex-col;
   }
   .weather-informations {
-    @apply flex flex-col items-center justify-center gap-5 bg-gray-800 p-4 text-white sm:h-40 sm:flex-row sm:gap-0;
+    @apply relative flex flex-col items-center justify-center gap-5 bg-gray-800 p-4 text-white sm:h-40 sm:flex-row sm:gap-0;
+  }
+
+  .fav-btn {
+    @apply absolute right-6 top-6 h-5;
   }
 
   .weather-details {
