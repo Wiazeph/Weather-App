@@ -4,13 +4,13 @@
 
     <div class="today-card">
       <div class="weather-informations">
-        <div class="date w-1/4 text-right text-xl">
+        <div class="date w-full text-center text-sm sm:w-1/4 sm:text-right sm:text-lg md:text-xl">
           {{ isLoading ? 'Loading...' : formattedLocalTime }}
         </div>
-        <div class="city w-2/4 text-center text-5xl">
+        <div class="city w-full text-center text-4xl sm:w-2/4 sm:text-5xl">
           {{ isLoading ? 'Loading...' : weatherData.location.name }}
         </div>
-        <div class="country w-1/4 text-center text-xl">
+        <div class="country w-full text-center text-sm sm:w-1/4 sm:text-lg md:text-xl">
           {{ isLoading ? 'Loading...' : weatherData.location.country }}
         </div>
       </div>
@@ -26,7 +26,7 @@
           <div class="details-right">
             <div class="details-title">Temperature</div>
             <div class="details-content">
-              {{ isLoading ? 'Loading...' : `${weatherData.current.feelslike_c}°C` }}
+              {{ isLoading ? 'Loading...' : `${weatherData.current.feelslike_c} °C` }}
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@ const formattedLocalTime = computed(() => {
     @apply flex flex-col;
   }
   .weather-informations {
-    @apply flex h-40 items-center bg-gray-800 p-4 text-white;
+    @apply flex flex-col items-center justify-center gap-5 bg-gray-800 p-4 text-white sm:h-40 sm:flex-row sm:gap-0;
   }
 
   .weather-details {
@@ -132,11 +132,11 @@ const formattedLocalTime = computed(() => {
   }
 
   .details {
-    @apply flex h-[120px] w-[calc(50%-12px)] items-center justify-center bg-gray-800 py-4;
+    @apply flex h-[120px] w-full items-center justify-center bg-gray-800 py-4 sm:w-[calc(50%-12px)];
   }
 
   .details-left {
-    @apply flex w-1/3 items-center justify-center;
+    @apply flex w-1/2 items-center justify-center sm:w-1/3;
   }
 
   .todaydata-icon {
@@ -144,7 +144,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .details-right {
-    @apply flex w-2/3 flex-col justify-center gap-2;
+    @apply flex w-1/2 flex-col justify-center gap-2 sm:w-2/3;
   }
 
   .details-title {
@@ -152,7 +152,7 @@ const formattedLocalTime = computed(() => {
   }
 
   .details-content {
-    @apply text-3xl;
+    @apply text-xl sm:text-2xl md:text-3xl;
   }
 }
 </style>

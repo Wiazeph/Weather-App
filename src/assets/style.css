@@ -17,7 +17,7 @@
 
 @layer utilities {
   #app {
-    @apply mx-auto my-12 flex w-[1000px] flex-col gap-12;
+    @apply mx-auto my-6 flex min-w-[300px] max-w-[calc(100%-48px)] flex-col gap-12 sm:my-8 sm:max-w-[592px] md:my-10  md:max-w-[720px] lg:my-12 lg:max-w-[976px];
   }
 
   header,

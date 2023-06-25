@@ -19,7 +19,7 @@
               <div>
                 <div class="details-title">Temperature</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[1].day.avgtemp_c }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[1].day.avgtemp_c} °C` }}
                 </div>
               </div>
             </div>
@@ -33,7 +33,7 @@
               <div>
                 <div class="details-title">Wind Speed</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[1].day.avgvis_km }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[1].day.avgvis_km} km/h` }}
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@
               <div>
                 <div class="details-title">Humidity</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[1].day.avghumidity }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[1].day.avghumidity}%` }}
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
               <div>
                 <div class="details-title">Temperature</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[2].day.avgtemp_c }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[2].day.avgtemp_c} °C` }}
                 </div>
               </div>
             </div>
@@ -100,7 +100,7 @@
               <div>
                 <div class="details-title">Wind Speed</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[2].day.avgvis_km }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[2].day.avgvis_km} km/h` }}
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@
               <div>
                 <div class="details-title">Humidity</div>
                 <div class="details-content">
-                  {{ isLoading ? 'Loading...' : weatherData[2].day.avghumidity }}
+                  {{ isLoading ? 'Loading...' : `${weatherData[2].day.avghumidity}%` }}
                 </div>
               </div>
             </div>
@@ -175,11 +175,17 @@ const formattedLocalTime = (date) => {
 
 @layer utilities {
   .next-days-cards {
-    @apply flex flex-wrap;
+    @apply flex flex-wrap justify-center;
   }
 
+  /* w-[calc(50%-12px)] */
+
   .day-card {
-    @apply flex h-[200px] w-[calc(50%-12px)] flex-col gap-3 bg-gray-800 px-6 py-4;
+    @apply flex w-full min-w-[250px] flex-col gap-3 bg-gray-800
+    px-6
+    py-4
+    sm:w-[calc(50%-12px)]
+    lg:h-[200px];
   }
 
   .date {
@@ -187,11 +193,11 @@ const formattedLocalTime = (date) => {
   }
 
   .informations-section {
-    @apply flex h-full flex-wrap;
+    @apply flex h-full flex-row flex-wrap sm:flex-col sm:flex-nowrap sm:gap-4 lg:flex-row lg:gap-0;
   }
 
   .details {
-    @apply flex w-1/2  flex-col justify-between gap-4;
+    @apply flex w-1/2 flex-col justify-between gap-4 sm:w-full lg:w-1/2;
   }
 
   .details-section {
