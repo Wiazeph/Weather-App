@@ -2,7 +2,6 @@
 import MenuBar from './components/MenuBar.vue'
 import TodayData from './components/TodayData.vue'
 import ForecastData from './components/ForecastData.vue'
-import FavoritesData from './components/FavoritesData.vue'
 import FooterBar from './components/FooterBar.vue'
 </script>
 
@@ -13,7 +12,6 @@ import FooterBar from './components/FooterBar.vue'
   <main>
     <TodayData />
     <ForecastData />
-    <FavoritesData />
   </main>
   <footer>
     <FooterBar />

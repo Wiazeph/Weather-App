@@ -28,7 +28,8 @@
   header,
   .today-card,
   .weather-details,
-  .next-days-cards {
+  .next-days-cards,
+  .favorites-data-cards {
     @apply gap-6;
   }
 
@@ -37,7 +38,8 @@
   .weather-informations,
   .details,
   .day-card,
-  .footer-section {
+  .footer-section,
+  .favorite-data-card {
     @apply rounded-xl;
   }
 
