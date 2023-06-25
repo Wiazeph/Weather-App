@@ -42,10 +42,12 @@ const weatherStore = useWeatherStore()
 
 const handleGetWeatherData = () => {
   weatherStore.getWeatherData(city.value)
+  city.value = ''
 }
 
 const handleGetLocationData = () => {
   weatherStore.getLocationData()
+  city.value = ''
 }
 
 onMounted(() => {
